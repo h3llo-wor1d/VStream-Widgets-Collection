@@ -1,4 +1,5 @@
-# VStream Widget Collection!
+![image](https://github.com/h3llo-wor1d/VStream-Widgets-Collection/assets/83967304/f4dd185c-c8e9-43d6-8d6c-fe5cbfb18bd5)
+
 
 ## How to set up OBS
 In order for all of these to work, you **MUST** launch with the .lnk file attached. This removes CORS, which allows 
