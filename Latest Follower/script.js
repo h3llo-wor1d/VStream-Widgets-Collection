@@ -20,20 +20,17 @@ async function loadOptions() {
     });
 }
 
-
-let username = "h3llo_wor1d";
-
 window.names = [];
 window.latest = "";
 
 const initFollowers = async () => {
-    let f1 = await fetch("https://vstream.com/c/@h3llo_wor1d/followers")
+    let f1 = await fetch(`https://vstream.com/c/@${options.username}/followers`)
     $($.parseHTML(await f1.text())).find(`a[href*="/c/@"]`).each(function(){
         let name = $(this).attr('href')
         if (
             name.startsWith("/c/@") && 
             names.indexOf(name) === -1 && 
-            name !== `/c/@${username}`
+            name !== `/c/@${options.username}`
         ) {
             window.names.push(name);
         }
@@ -41,14 +38,14 @@ const initFollowers = async () => {
 }
 
 const getFollowers = async () => {
-    let f1 = await fetch("https://vstream.com/c/@h3llo_wor1d/followers")
+    let f1 = await fetch(`https://vstream.com/c/@${options.username}/followers`)
 
     $($.parseHTML(await f1.text())).find(`a[href*="/c/@"]`).each(function(){
         let name = $(this).attr('href')
         if (
             name.startsWith("/c/@") && 
             names.indexOf(name) === -1 && 
-            name !== `/c/@${username}`
+            name !== `/c/@${options.username}`
         ) {
             if (window.names !== [] && window.names.indexOf(name) === -1) {
                 window.latest = name.replace("/c/@", "");
