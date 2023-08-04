@@ -11,4 +11,4 @@
 - will work immediately
 
 ## Preview of Widget in OBS
-![Preview](https://raw.githubusercontent.com/h3llo-wor1d/VStream-Follower-Goal-Widget/main/image_2023-08-04_140702003.png)
+![Preview](https://raw.githubusercontent.com/h3llo-wor1d/VStream-Widgets-Collection/main/Follow%20Goal/preview.png)
