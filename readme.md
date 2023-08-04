@@ -11,3 +11,5 @@ For each widget, please configure and drag each widget.html file into OBS studio
 Once dragged, widgets will work immediately!
 
 > Individual instructions per-widget along with previews are available in their respective folders!
+
+### Please use with credit! My VStream is available [here](https://vstream.com/h3llo_wor1d). Have fun!
