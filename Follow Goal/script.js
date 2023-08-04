@@ -33,7 +33,7 @@ async function loadOptions() {
         newFontStyleSheet.textContent = `
         body {
             margin: 0;
-            font-size: 22px;
+            font-size: ${options.textSize}px;
             color: #ffffff;
             font-family: ${fontName};
         }

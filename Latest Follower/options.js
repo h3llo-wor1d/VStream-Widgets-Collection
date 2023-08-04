@@ -3,5 +3,6 @@
 document.styleOptions = {
     fontFile: "main.otf",
     username: "h3llo_wor1d",
-    textColor: "black"
+    textColor: "black",
+    textSize: 22
 }

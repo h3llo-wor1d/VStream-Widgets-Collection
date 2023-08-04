@@ -5,5 +5,6 @@ document.styleOptions = {
     defaultBarColor: "lime",
     followerGoal: 100,
     followerGoalMessage: "VStream Follower Goal",
-    username: "h3llo_wor1d"
+    username: "h3llo_wor1d",
+    textSize: 22
 }
