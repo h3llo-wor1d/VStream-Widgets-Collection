@@ -62,7 +62,7 @@ const getDetails = async (videoID) => {
 } 
 
 const getStream = async () => {
-    let f1 = await fetch(`https://vstream.com/c/@${options.channelName}`);
+    let f1 = await fetch(`https://vstream.com/c/@${options.username}`);
     let f2 = await f1.text();
     const $ = window.cheerio.load(f2, null, false);
     for (var el of $('a[title]').get()) {
@@ -102,15 +102,6 @@ const formatMessage = async (message) => {
     document.getElementById('log').appendChild(e);
 }
 var vstreamClient = null;
-
-function abToB(ab) {
-    var buffer = new Buffer(ab.byteLength);
-    var view = new Uint8Array(ab);
-    for (var i = 0; i < buffer.length; ++i) {
-        buffer[i] = view[i];
-    }
-    return buffer;
-}
 
 function separateEmoji(text) {
     var re = /<img .*?>/g;
