@@ -1,0 +1,58 @@
+<html>
+    <head>
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" rel="stylesheet">
+        <script src="https://cdn.polyfill.io/v2/polyfill.min.js?unknown=polyfill&features=es6|gated|always"></script>
+        <script src="https://cdn.jsdelivr.net/npm/ws@8.13.0/browser.min.js"></script>
+        <style id="theme"></style>
+        <script src="options.js"></script>
+        <script type="module">
+            import { Decoder } from 'https://cdn.jsdelivr.net/npm/cbor-x@1.5.3/+esm';
+            import cheerio from 'https://cdn.jsdelivr.net/npm/cheerio@1.0.0-rc.12/+esm';
+
+            window.cheerio = cheerio;
+
+            const EnvelopeKeyMap = {
+                __typename: -4,
+                channelID: -3,
+                chatID: -2,
+                id: -1,
+                isVTuber: 0,
+                pfp: 1,
+                timestamp: 2,
+                url: 3,
+                userID: 4,
+                username: 5,
+            };
+            window.Decoder = new Decoder({
+                keyMap: EnvelopeKeyMap,
+                structuredClone: true,
+            });
+        </script>
+        <script src="parse.js"></script>
+        
+        <link href="style.css" rel="stylesheet" />
+
+        <style>
+            html, body {
+                margin: 0px;
+                padding: 0px;
+                width: 100%;
+                height: 100%;
+                background: transparent;
+                overflow: hidden;
+                color: black;
+            }
+          </style>
+          <script src="script.js" ></script>
+    </head>
+    <body onload="init()">
+        <input type="hidden" id="app_url" value="https://streamlabs.com" />
+        <div id="custom_html">
+            <div id="log" class="sl__chat__layout">
+            </div>
+            
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.3/webfont.js"></script>
+    </body>
+</html>
