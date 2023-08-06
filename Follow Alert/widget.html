@@ -1,0 +1,55 @@
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="options.js"></script>
+        <style id="configurableOptions">
+            body {
+                margin: 0;
+                font-size: 22px;
+                color: black;
+                font-family: main;
+            }
+
+            
+        </style>
+        <style>
+            #popup {
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+                text-align: center;
+                opacity: 0;
+            }
+
+            #newName {
+                color: #5CA359;
+                font-weight: bold;
+            }
+        </style>
+        <script src="script.js"></script>
+        <script>
+            const makeGoAway = () => {
+                const newspaperSpinning = [
+                    { opacity: "0" },
+                    { opacity: "1" },
+                    { opacity: "1"},
+                    { opacity: "0"}
+                ];
+
+                const newspaperTiming = {
+                    duration: document.styleOptions.duration*1000,
+                    iterations: 1,
+                };
+                document.getElementById("popup").animate(newspaperSpinning, newspaperTiming);
+                document.getElementById("gif").src = document.styleOptions.media;
+                new Audio(document.styleOptions.sound).play();
+            }
+        </script>
+    </head>
+    <body onLoad="onLoad();">
+        <div id="popup">
+            <img id="gif" src="https://consumingtech.com/wp-content/uploads/2022/10/among-us-twerk.gif" height="250"/><br/>
+            <span id="newName">[name]</span> has followed the channel!
+        </div>
+    </body>
+</html>
