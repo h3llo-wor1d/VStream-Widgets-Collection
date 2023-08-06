@@ -73,6 +73,18 @@ const getStream = async () => {
     }
 }
 
+const getImage = async (channelName) => {
+    let f1 = await fetch(`https://vstream.com/c/@${channelName}`);
+    let f2 = await f1.text();
+    const $ = window.cheerio.load(f2, null, false);
+    for (var el of $('img[srcset]').get()) {
+        let h = $(el).attr('class');
+        if (h === "rounded-full object-cover aspect-square drop-shadow-[0_2px_6px_rgba(0,0,0,0.45)] w-[5rem] border-xxl box-content border-background-200") {
+            return $(el).attr('src');
+        }
+    }
+}
+
 const formatMessage = async (message) => {
     var o = defaultChatMessageTemplate();
     var m = message.body;
@@ -98,7 +110,7 @@ const formatMessage = async (message) => {
         e.querySelector('.chat').style.backgroundColor = message.chatter.color;
         e.querySelector(".chat").classList.add('bubbleLeft');
     }
-
+    e.id = message.id;
     document.getElementById('log').appendChild(e);
 }
 var vstreamClient = null;
@@ -147,11 +159,12 @@ class ChatClient {
                 let text = separateEmoji(parsed.text);
                 formatMessage({
                     body: text[0],
+                    id: parsed.id,
                     chatter: {
                         name: parsed.profile.displayName,
                         color: `rgb(${parsed.profile.color.join(",")})`,
                         badges: parsed.profile.badges,
-                        pfp: parsed.profile.avatar.split("?")[0]+"?dpr=1&auto=format%2Ccompress&faceindex=1&facepad=2.4&fit=crop&h=128&mask=ellipse&w=128&s=19b02d4812f7f4c32e79aa44b768ae98"
+                        pfp: await getImage(parsed.profile.displayName)
                     },
                     emotes: text[1]
                 });
