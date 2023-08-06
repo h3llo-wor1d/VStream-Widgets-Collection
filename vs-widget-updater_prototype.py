@@ -30,11 +30,14 @@ def makeOptionChange(new, old):
 resp = requests.get("https://github.com/h3llo-wor1d/VStream-Widgets-Collection/archive/refs/heads/main.zip", stream=True)
 resp.raise_for_status()
 z = zipfile.ZipFile(io.BytesIO(resp.content))
-zContents = [i for i in z.namelist() if not i.endswith(".py") and i[-3] == "."]
-currentFiles = [i.replace("\\", "/") for i in glob.glob("**", recursive=True) if not i.endswith(".py") and i[-3] == "."]
+zContents = [i for i in z.namelist() if "." in i and not i.endswith((".lnk", ".png", ".mp3", ".ttf", ".otf", ".py"))]
+currentFiles = [i.replace("\\", "/") for i in glob.glob("**", recursive=True) if "." in i and not i.endswith((".lnk", ".png", ".mp3", ".ttf", ".otf", ".py"))]
+
+print(zContents)
 
 for i in range(len(zContents)-1):
     print(f"Progress: {i+1}/{len(zContents)-1}")
+    print(zContents[i])
     if (zContents[i].replace('VStream-Widgets-Collection-main/', '') in currentFiles):
         new = z.read(zContents[i]).decode("utf-8")
         old = open(zContents[i].replace('VStream-Widgets-Collection-main/', ''), "r").read()
@@ -48,5 +51,7 @@ for i in range(len(zContents)-1):
                     continue
         else:
             continue
-    print("Shouldn't change anything...?")
-    open(zContents[i].replace('VStream-Widgets-Collection-main/', ''), "w+").write(new)
+    else:
+        new = z.read(zContents[i]).decode("utf-8")
+        print(f"New file found or old file updated (name: {zContents[i].replace('VStream-Widgets-Collection-main/', '')}")
+        open(zContents[i].replace('VStream-Widgets-Collection-main/', ''), "w+").write(new)
