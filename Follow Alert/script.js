@@ -14,6 +14,9 @@ async function loadOptions() {
             color: ${options.textColor};
             font-family: ${fontName};
         }
+        #newName {
+            text-color: ${options.nameColor};
+        }
         `;
         document.head.appendChild(newFontStyleSheet);
         document.head.removeChild(document.getElementById('configurableOptions'));
