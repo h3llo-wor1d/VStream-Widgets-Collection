@@ -5,6 +5,8 @@
 ㅤ
 ㅤ
 # FAQ
+## Where is the source code for `vs-updater.exe`?
+The source code for this [here](https://github.com/h3llo-wor1d/vs-updater)
 
 ## How do I change the size of widgets in OBS Studio?
 ![image](https://raw.githubusercontent.com/h3llo-wor1d/VStream-Widgets-Collection/main/how2scale.png)
