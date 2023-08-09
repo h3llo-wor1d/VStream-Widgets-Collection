@@ -80,6 +80,7 @@ const getFollowers = async () => {
 }
 
 function onLoad() {
+    document.getElementById("newName").style.color = options.nameColor;
     loadOptions();
     initFollowers();
     setInterval(getFollowers, 500);
