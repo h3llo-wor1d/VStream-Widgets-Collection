@@ -2,7 +2,7 @@ const options = document.styleOptions;
 
 async function runModule() {
     await getFollowers();
-    setInterval(getFollowers, 500);
+    setInterval(getFollowers, 5000);
 }
 
 async function getFollowers() {
