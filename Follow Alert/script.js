@@ -83,5 +83,5 @@ function onLoad() {
     document.getElementById("newName").style.color = options.nameColor;
     loadOptions();
     initFollowers();
-    setInterval(getFollowers, 500);
+    setInterval(getFollowers, 5000);
 }
